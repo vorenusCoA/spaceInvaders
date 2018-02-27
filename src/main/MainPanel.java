@@ -67,7 +67,7 @@ public class MainPanel extends JPanel implements ActionListener, Parameters {
 		// Keep enemies within board margins and change direction if necessary
 		boolean changeDirection = false;
 		for (Enemy enemy : this.enemies) {
-			if (enemy.getPositionX() < 0 || enemy.getPositionX() > 550) {
+			if (enemy.getPositionX() < 0 || enemy.getPositionX() > 564) {
 				changeDirection = true;
 				break;
 			}
@@ -85,9 +85,9 @@ public class MainPanel extends JPanel implements ActionListener, Parameters {
 			this.player.setVelX(0);
 			this.player.setPositionX(0);
 		}
-		if (this.player.getPositionX() > 550) {
+		if (this.player.getPositionX() > 543) {
 			this.player.setVelX(0);
-			this.player.setPositionX(550);
+			this.player.setPositionX(543);
 		}		
 		this.player.setPositionX(this.player.getPositionX() + this.player.getVelX());
 
