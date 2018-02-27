@@ -21,5 +21,9 @@ public interface Parameters {
     public static final int ENEMY_INIT_POSITION_X = 50;
     public static final int ENEMY_INIT_POSITION_Y = 50;
     public static final int ENEMY_INIT_VEL_X = 1;
-	
+    public static final int ENEMY_INCREASE_POSITION_Y = 2;
+
+    // Timer
+    public static final int TIMER_DELAY = 15;
+
 }

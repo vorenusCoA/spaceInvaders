@@ -38,11 +38,12 @@ public class MainPanel extends JPanel implements ActionListener, Parameters {
 	}
 
 	public MainPanel() {
-		this.timer = new Timer(5, this);
+		this.timer = new Timer(TIMER_DELAY, this);
 		this.player = new Player();
 
-		for (int positionX = ENEMY_INIT_POSITION_X; positionX < 550; positionX += 50) {
-			for (int positionY = ENEMY_INIT_POSITION_X; positionY < 200; positionY += 50) {
+		// Create enemies
+		for (int positionX = ENEMY_INIT_POSITION_X; positionX < 450; positionX += 50) {
+			for (int positionY = ENEMY_INIT_POSITION_Y; positionY < 200; positionY += 50) {
 				this.enemies.add(new Enemy(positionX, positionY));
 			}
 		}
@@ -58,12 +59,12 @@ public class MainPanel extends JPanel implements ActionListener, Parameters {
 		}
 
 		g2D.drawImage(this.player.getShip(), this.player.getPositionX(), this.player.getPositionY(), null);
-		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		// Keep enemies within board margins and change direction if necessary
 		boolean changeDirection = false;
 		for (Enemy enemy : this.enemies) {
 			if (enemy.getPositionX() < 0 || enemy.getPositionX() > 550) {
@@ -71,15 +72,15 @@ public class MainPanel extends JPanel implements ActionListener, Parameters {
 				break;
 			}
 		}
-
 		for (Enemy enemy : this.enemies) {
 			if (changeDirection) {
 				enemy.setVelX(-enemy.getVelX());
-				enemy.setPositionY(enemy.getPositionY() + 2);
+				enemy.setPositionY(enemy.getPositionY() + ENEMY_INCREASE_POSITION_Y);
 			}
 			enemy.setPositionX(enemy.getPositionX() + enemy.getVelX());
 		}
-		
+
+		// Keep player within board margins
 		if (this.player.getPositionX() < 0) {
 			this.player.setVelX(0);
 			this.player.setPositionX(0);

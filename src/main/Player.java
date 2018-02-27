@@ -62,12 +62,11 @@ public class Player implements KeyListener, Parameters {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			this.velX = PLAYER_INCREASE_VEL_X;
 		}
-		
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		this.velX = 0;
 	}
-	
+
 }
