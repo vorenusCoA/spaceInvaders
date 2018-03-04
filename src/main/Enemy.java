@@ -1,7 +1,6 @@
 package main;
 
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -44,7 +43,7 @@ public class Enemy implements Parameters {
 		this.velX = ENEMY_INIT_VEL_X;
 
 		try {
-			this.ship = ImageIO.read(new File(ENEMY_SHIP));
+			this.ship = ImageIO.read(this.getClass().getResource(ENEMY_SHIP));
 		} catch (IOException e) {
 			System.out.println("Enemy image not found: " + e.getMessage());
 		}

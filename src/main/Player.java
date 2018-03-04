@@ -3,7 +3,6 @@ package main;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -45,7 +44,7 @@ public class Player implements KeyListener, Parameters {
 		this.positionY = PLAYER_INIT_POSITION_Y;
 
 		try {
-			this.ship = ImageIO.read(new File(PLAYER_SHIP));
+			this.ship = ImageIO.read(this.getClass().getResource(PLAYER_SHIP));
 		} catch (IOException e) {
 			System.out.println("Player image not found: " + e.getMessage());
 		}
@@ -53,7 +52,7 @@ public class Player implements KeyListener, Parameters {
 
 	@Override
 	public void keyTyped(KeyEvent e) {}
-	
+
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {

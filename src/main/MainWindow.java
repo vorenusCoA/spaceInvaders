@@ -1,8 +1,9 @@
 package main;
 
 import java.awt.Image;
-import java.awt.Toolkit;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class MainWindow extends JFrame implements Parameters {
@@ -21,9 +22,12 @@ public class MainWindow extends JFrame implements Parameters {
         this.setTitle(BOARD_TITLE);
 
         // Game icon
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image icon = toolkit.getImage(BOARD_ICON);
-        this.setIconImage(icon);
+		try {
+			Image icon = ImageIO.read(this.getClass().getResource(BOARD_ICON));
+			this.setIconImage(icon);
+		} catch (IOException e) {
+			System.out.println("Icon image not found: " + e.getMessage());
+		}
     }
 
 }
